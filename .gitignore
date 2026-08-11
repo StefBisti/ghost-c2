@@ -1,0 +1,21 @@
+
+# certificates
+certs/
+*.key
+*.crt
+*.csr
+
+# terraform state
+infra/.terraform/
+*.tfstate
+*.tfstate.backup
+
+# built binaries
+ghost-server
+ghost-agent
+
+# runtime files
+audit.json
+
+# other
+reference.md

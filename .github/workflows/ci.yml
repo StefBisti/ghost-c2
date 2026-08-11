@@ -1,0 +1,32 @@
+name: CI
+
+on:
+    push:
+        branches: ["*"]
+    pull_request: 
+
+jobs:
+    security-and-build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-go@v5
+
+            - name: gosec
+              uses: securego/gosec@master
+              with:
+                args: ./...
+
+            - name: govulncheck
+              run: |
+                go install golang.org/x/vuln/cmd/govulncheck@latest
+                govulncheck ./...
+            
+            - name: go test
+              run: go test ./...
+
+            - name: go build
+              run: |
+                GOOS=linux GOARCH=amd64 go build -o /dev/null ./cmd/server
+                GOOS=linux GOARCH=amd64 go build -o /dev/null ./cmd/agent
