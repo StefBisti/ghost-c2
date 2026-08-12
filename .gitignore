@@ -17,5 +17,9 @@ ghost-agent
 # runtime files
 audit.json
 
+# binaries
+cmd/server/server
+cmd/agent/agent
+
 # other
 reference.md

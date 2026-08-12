@@ -2,7 +2,9 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
+	"io"
 	"net"
 	"time"
 
@@ -38,7 +40,7 @@ func handleConnection(conn net.Conn) {
 	for {
 		var beacon protocol.Beacon
 		if err := decoder.Decode(&beacon); err != nil {
-			if err.Error() == "EOF" {
+			if errors.Is(err, io.EOF) {
 				fmt.Printf("Agent %s disconnected\n", conn.RemoteAddr())
 			} else {
 				fmt.Println("Read error:", err)

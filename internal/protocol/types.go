@@ -10,7 +10,7 @@ type Command struct {
 }
 
 type Result struct {
-	AgentId string `json:"agent_id"`
+	AgentID string `json:"agent_id"`
 	Output  string `json:"output"`
 	Error   string `json:"error,omitempty"`
 }
