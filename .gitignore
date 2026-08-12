@@ -10,10 +10,6 @@ infra/.terraform/
 *.tfstate
 *.tfstate.backup
 
-# built binaries
-ghost-server
-ghost-agent
-
 # runtime files
 audit.json
 
@@ -21,5 +17,17 @@ audit.json
 cmd/server/server
 cmd/agent/agent
 
+# Go build cache
+*.exe
+*.out
+
 # other
 reference.md
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/

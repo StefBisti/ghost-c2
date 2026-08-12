@@ -29,7 +29,9 @@ func beaconSignal(conn *net.Conn) {
 	_, err := sendMessage(*conn)
 	if err != nil {
 		fmt.Println("Lost connection, reconnecting...")
-		(*conn).Close()
+		if closeErr := (*conn).Close(); closeErr != nil {
+			fmt.Println("Error closing connection:", closeErr)
+		}
 		(*conn) = connect()
 	}
 }
