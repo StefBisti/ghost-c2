@@ -14,8 +14,8 @@ infra/.terraform/
 audit.json
 
 # binaries
-cmd/server/server
-cmd/agent/agent
+server
+agent
 
 # Go build cache
 *.exe

@@ -3,7 +3,9 @@ name: CI
 on:
     push:
         branches: ["*"]
-    pull_request: 
+    pull_request:
+    schedule:
+      - cron: "0 9 * * 1"
 
 jobs:
     security-and-build:
@@ -13,7 +15,7 @@ jobs:
 
             - uses: actions/setup-go@v5
               with:
-                go-version: "1.23"
+                go-version: "1.25.10"
 
 
             - name: gosec
